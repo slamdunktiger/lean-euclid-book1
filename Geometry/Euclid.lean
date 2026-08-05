@@ -20,8 +20,9 @@
   | I.8  | SSS congruence                        | Yes         | —     |
   | I.9  | Angle bisection (existence)          | No          | ✅    |
 | I.10 | Bisect a segment (midpoint)           | No          | ✅    |
+| I.11 | Erect perpendicular from a point      | No          | ✅    |
 
-  All proofs verified with `lake build` (ZERO `sorry`).
+ All proofs verified with `lake build` (ZERO `sorry`).
 
   ## How to build
 
@@ -37,6 +38,7 @@ import Geometry.Prop3
 import Geometry.Prop7
 import Geometry.Prop9
 import Geometry.Prop10
+import Geometry.Prop11
 
 namespace Geometry.Euclid
 
@@ -62,5 +64,14 @@ namespace Geometry.Euclid
   To bisect a given rectilinear angle.
   (Existence of a point D such that the angle ABD equals the angle DBC.) -/
 #check Euclid.BookI.Prop9.angle_bisector_exists
+
+/-! ### Book I, Proposition 10
+  To bisect a given finite straight line (construct its midpoint). -/
+#check Euclid.BookI.Prop10.segment_bisect_exists
+
+/-! ### Book I, Proposition 11
+  To draw a straight line at right angles to a given straight line
+  from a given point on it (erect a perpendicular). -/
+#check Euclid.BookI.Prop11.perpendicular_exists
 
 end Geometry.Euclid

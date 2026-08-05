@@ -23,7 +23,7 @@ namespace Euclid.BookI.Prop10
     Given distinct points A, B, there exists a point M such that
     dist A M = dist M B. -/
 theorem segment_bisect_exists
-    (A B : EuclideanSpace ℝ (Fin 2)) (h : A ≠ B) :
+    (A B : EuclideanSpace ℝ (Fin 2)) (_h : A ≠ B) :
     ∃ M : EuclideanSpace ℝ (Fin 2),
       dist A M = dist M B := by
   -- M = (1/2) • (A + B)  (the midpoint)
