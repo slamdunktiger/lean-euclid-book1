@@ -19,6 +19,7 @@
   | I.7  | Uniqueness of triangle (perp)        | No          | ✅    |
   | I.8  | SSS congruence                        | Yes         | —     |
   | I.9  | Angle bisection (existence)          | No          | ✅    |
+| I.10 | Bisect a segment (midpoint)           | No          | ✅    |
 
   All proofs verified with `lake build` (ZERO `sorry`).
 
@@ -35,6 +36,7 @@ import Geometry.Prop2
 import Geometry.Prop3
 import Geometry.Prop7
 import Geometry.Prop9
+import Geometry.Prop10
 
 namespace Geometry.Euclid
 
