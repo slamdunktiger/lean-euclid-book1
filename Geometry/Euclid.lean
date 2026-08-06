@@ -1,10 +1,18 @@
 /-
   Euclid's Elements, Book I — formalization in Lean 4 + mathlib.
 
-  This module collects machine-checked proofs of the first propositions
-  of Euclid's Elements (c. 300 BCE) that are NOT already in mathlib.
+  This is a STANDALONE library (depends on mathlib, not part of it). It
+  collects machine-checked proofs of the first propositions of Euclid's
+  Elements (c. 300 BCE), formalized directly in ℝ² via the law of cosines
+  and inner products (`EuclideanSpace ℝ (Fin 2)`), for study and teaching.
 
   Author: Warren Wong
+
+  Note: several propositions below (I.5, I.13, I.15, I.47) already exist in
+  mathlib under `Mathlib/Geometry/Euclidean`. They are re-proven here as a
+  self-contained, elementary presentation. This repository is intentionally
+  kept separate from mathlib (per the mathlib contribution guidelines, a
+  standalone repo is the recommended home for such material).
 
   ## Status
 
@@ -14,13 +22,16 @@
   | I.2  | Copy a segment to a point            | No          | ✅    |
   | I.3  | Cut a shorter segment from a longer  | No          | ✅    |
   | I.4  | SAS congruence                        | Yes         | —     |
-  | I.5  | Isosceles base angles equal          | Yes         | —     |
+  | I.5  | Isosceles base angles equal          | Yes         | ✅ (standalone) |
   | I.6  | Converse of I.5                       | Yes         | —     |
   | I.7  | Uniqueness of triangle (perp)        | No          | ✅    |
   | I.8  | SSS congruence                        | Yes         | —     |
   | I.9  | Angle bisection (existence)          | No          | ✅    |
-| I.10 | Bisect a segment (midpoint)           | No          | ✅    |
-| I.11 | Erect perpendicular from a point      | No          | ✅    |
+  | I.10 | Bisect a segment (midpoint)           | No          | ✅    |
+  | I.11 | Erect perpendicular from a point      | No          | ✅    |
+  | I.13 | Angles on a straight line sum to π    | Yes         | ✅ (standalone) |
+  | I.15 | Vertical angles equal                 | Yes         | ✅ (standalone) |
+  | I.47 | The Pythagorean theorem (Pythagoras) | Yes         | ✅ (standalone) |
 
  All proofs verified with `lake build` (ZERO `sorry`).
 
@@ -35,10 +46,14 @@
 import Geometry.Basic
 import Geometry.Prop2
 import Geometry.Prop3
+import Geometry.Prop5
 import Geometry.Prop7
 import Geometry.Prop9
 import Geometry.Prop10
 import Geometry.Prop11
+import Geometry.Prop13
+import Geometry.Prop15
+import Geometry.Prop47
 
 namespace Geometry.Euclid
 
@@ -73,5 +88,23 @@ namespace Geometry.Euclid
   To draw a straight line at right angles to a given straight line
   from a given point on it (erect a perpendicular). -/
 #check Euclid.BookI.Prop11.perpendicular_exists
+
+/-! ### Book I, Proposition 5
+  In isosceles triangles the angles at the base are equal to one another. -/
+#check Euclid.BookI.Prop5.base_angles_eq
+
+/-! ### Book I, Proposition 13
+  If a straight line set up on a straight line makes angles, it makes either
+  two right angles or angles equal to two right angles. -/
+#check Euclid.BookI.Prop13.straight_line_angles_sum_pi
+
+/-! ### Book I, Proposition 15
+  If two straight lines cut one another, they make the vertical angles equal. -/
+#check Euclid.BookI.Prop15.vertical_angles_eq
+
+/-! ### Book I, Proposition 47
+  In right-angled triangles the square on the side subtending the right angle
+  is equal to the squares on the sides containing the right angle. -/
+#check Euclid.BookI.Prop47.pythagoras
 
 end Geometry.Euclid
